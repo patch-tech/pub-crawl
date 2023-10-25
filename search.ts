@@ -1,13 +1,13 @@
 import { RestaurantInsights } from "pub-crawl";
 
 interface Bar {
-	name: string
-	Latitude: number,
-	Longitude: number,
-	phoneNumber: string,
-	streetAddress: string,
+    name: string
+    Latitude: number,
+    Longitude: number,
+    phoneNumber: string,
+    streetAddress: string,
     medianSpend: number,
-        dist?: number,
+    dist?: number,
 }
 
 function to_ratio(a: number, b: number, c: number){
@@ -48,14 +48,14 @@ async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: n
 	medianSpendPerCustomer.as("Median_Spend"),
 	openedOn.as("Opened_On"),
 	closedOn.as("Closed_On"),)
-      .filter(categoryTags
+	.filter(categoryTags
 	.like('%Bar or Pub%')
 	.and(latitude.gte(min_lat))
 	.and(latitude.lte(max_lat))
 	.and(longitude.gte(min_lon))
 	.and(longitude.lte(max_lon))
 	.and(closedOn.isNull()))
-      .limit(50);
+	.limit(50);
 
     let bars = (await query.execute()) as Bar[];
 
@@ -97,14 +97,15 @@ async function get_bars(xlat0: number, xlon0: number, xlat1: number, xlon1: numb
 	console.log(bars0.length);
 
 	if (bars0.length > 0) {
-	
-	let next_bar = bars0[0];
-	console.log(next_bar);
+	    
+	    let next_bar = bars0[0];
+	    console.log(next_bar);
 
-	bars_ret.push(next_bar);
+	    bars_ret.push(next_bar);
 
-	lat = next_bar.Latitude??0;
+	    lat = next_bar.Latitude??0;
 	    lon = next_bar.Longitude??0;
+	    
 	} else {
 	    i = n;
 	}
