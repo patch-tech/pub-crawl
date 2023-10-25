@@ -19,9 +19,10 @@ function from_ratio(a: number, r: number, c: number){
 async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: number) {
 
     let min_lat = Math.min(lat0, lat1);
-    let min_lon = Math.min(lat0, lat1);
+    let min_lon = Math.min(lon0, lon1);
     let max_lat = Math.max(lat0, lat1);
-    let max_lon = Math.max(lat0, lat1);
+    let max_lon = Math.max(lon0, lon1);
+
     
 
     let { locationName,
@@ -91,8 +92,12 @@ async function main() {
 	let dfn = calc_dist2(lat0, lon0, xlat1, xlon1);
 	let bars0 = [...bars].map(dfn);
 	bars0.sort((a: IBar, b: IBar) => ((a.dist ?? 0) - (b.dist ?? 0)));
-	console.log(bars0[0]);
-	
+	console.log(bars0.length);
+	let next_bar = bars0[0];
+	console.log(next_bar);
+
+	lat = next_bar.Latitude??0;
+	lon = next_bar.Longitude??0;	
     }
 
     // let bars = (await query_by_latlon(lat0, lon0, lat, lon));
