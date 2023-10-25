@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "inquirer": "^9.2.11",
     "node-ts": "^6.0.1",
     "pub-crawl": "file:dist/nodejs/pub-crawl-0.1.0-0.2.0.tgz"
   }
