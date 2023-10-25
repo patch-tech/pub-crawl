@@ -6,6 +6,15 @@ interface IBar {
     dist?: number,
 }
 
+type Bar = {
+	name: string
+	Latitude: number,
+	Longitude: number,
+	phoneNumber: string,
+	streetAddress: string,
+	medianSpend: number
+}
+
 function to_ratio(a: number, b: number, c: number){
     return (b - a) / (c - a);
 }
@@ -45,15 +54,15 @@ async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: n
 	streetAddress.as("Street_Address"),
 	medianSpendPerCustomer.as("Median_Spend"),
 	openedOn.as("Opened_On"),
-	closedOn.as("Closed_On"),
-    )
-	.filter(categoryTags
+	closedOn.as("Closed_On"),)
+      .filter(categoryTags
 	.like('%Bar or Pub%')
 	.and(latitude.gte(min_lat))
 	.and(latitude.lte(max_lat))
 	.and(longitude.gte(min_lon))
-	.and(longitude.lte(max_lon)))
-	.limit(50);
+	.and(longitude.lte(max_lon))
+	.and(closedOn.isNull()))
+      .limit(50);
 
     let bars = (await query.execute()).values();
 
