@@ -2,7 +2,8 @@
   "id": "018b67ee-3b10-7e7e-865c-8f4bad03b996",
   "name": "pub_crawl",
   "description": null,
-  "version": "0.1.0",
+  "version": "0.3.0",
+  "accelerated": true,
   "dataset": [
     {
       "name": "RESTAURANT_INSIGHTS",
@@ -16,6 +17,7 @@
         }
       },
       "schema": {
+	"primaryKey": "PLACEKEY",
         "fields": [
           {
             "constraints": {

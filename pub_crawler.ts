@@ -175,6 +175,7 @@ async function main() {
 	// let xlon0 = -74.010790;
 	// let xlat1 = 40.755760;
 	// let xlon1 = -73.968979;
+	const crawl_name = await input({ message: "What's the name of this epic adventure?" });
 
 	const start_location = await input({ message: 'Where are you starting?' });
 	const end_location = await input({ message: 'Where are you stopping?' });
@@ -184,7 +185,7 @@ async function main() {
 
 	let bars = (await get_bars(start.lat, start.lng, end.lat, end.lng));
 
-	summarize("The World's End", bars);
+	summarize(crawl_name, bars);
 
 	// for (const b of bars) {
 	// 	console.log(b);
