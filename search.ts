@@ -27,8 +27,6 @@ async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: n
     let max_lat = Math.max(lat0, lat1);
     let max_lon = Math.max(lon0, lon1);
 
-    
-
     let { locationName,
 	  categoryTags,
 	  latitude,
@@ -97,13 +95,19 @@ async function get_bars(xlat0: number, xlon0: number, xlat1: number, xlon1: numb
 	let bars0 = [...bars].map(dfn);
 	bars0.sort((a: Bar, b: Bar) => ((a.dist ?? 0) - (b.dist ?? 0)));
 	console.log(bars0.length);
+
+	if (bars0.length > 0) {
+	
 	let next_bar = bars0[0];
 	console.log(next_bar);
 
 	bars_ret.push(next_bar);
 
 	lat = next_bar.Latitude??0;
-	lon = next_bar.Longitude??0;	
+	    lon = next_bar.Longitude??0;
+	} else {
+	    i = n;
+	}
     }
 
     return bars_ret;
@@ -115,7 +119,10 @@ async function main() {
     let xlat1 = 40.755760;
     let xlon1 = -73.968979;
 
-    let bars = (await get_bars(xlat0, xlon0, xlat1, xlon1));
+    //let bars = (await get_bars(xlat0, xlon0, xlat1, xlon1));
+    //let bars = (await get_bars(xlat1, xlon1, xlat0, xlon0));
+    //let bars = (await get_bars(xlat0, xlon1, xlat1, xlon0));
+    let bars = (await get_bars(xlat1, xlon0, xlat0, xlon1));
 
     for (const b of bars) {
 	console.log(b);
