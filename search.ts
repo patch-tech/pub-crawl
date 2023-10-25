@@ -1,18 +1,13 @@
 import { RestaurantInsights } from "pub-crawl";
 
-interface IBar {
-    Latitude?: number,
-    Longitude?: number,
-    dist?: number,
-}
-
-type Bar = {
+interface Bar {
 	name: string
 	Latitude: number,
 	Longitude: number,
 	phoneNumber: string,
 	streetAddress: string,
-	medianSpend: number
+    medianSpend: number,
+        dist?: number,
 }
 
 function to_ratio(a: number, b: number, c: number){
@@ -64,21 +59,21 @@ async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: n
 	.and(closedOn.isNull()))
       .limit(50);
 
-    let bars = (await query.execute()).values();
+    let bars = (await query.execute()) as Bar[];
 
     return bars;
 }
 
 
-async function main() {
+async function get_bars(xlat0: number, xlon0: number, xlat1: number, xlon1: number) {
 
-    let xlat0 = 40.716110;
-    let xlon0 = -74.010790;
-    let xlat1 = 40.755760;
-    let xlon1 = -73.968979;
+    // let xlat0 = 40.716110;
+    // let xlon0 = -74.010790;
+    // let xlat1 = 40.755760;
+    // let xlon1 = -73.968979;
     
     function calc_dist2 (lat0: number, lon0: number, lat1: number, lon1: number) {
-	return function (x: IBar) {
+	return function (x: Bar) {
 	    let dy = Math.abs(((x.Latitude??0) - lat0) / (lat1 - lat0));
 	    let dx = Math.abs(((x.Longitude??0) - lon0) / (lon1 - lon0));
 	    x.dist = dx + dy;
@@ -88,38 +83,43 @@ async function main() {
     
     let lat =  xlat0;
     let lon =  xlon0;
+    let bars_ret: Bar[] = [];
 
     let n = 5;
     for (let i = 0; i < n; i++) {
-	let r0 = i / n;
-	let r1 = (i++) / n;
+	let r0 = 0.5 / (n - i);
 
 	let lat0 = from_ratio(lat, r0, xlat1);
-	let lon0 = from_ratio(lat, r1, lon);
+	let lon0 = from_ratio(lon, r0, xlon1);
 	
 	let bars = (await query_by_latlon(lat0, lon0, xlat1, xlon1));
 	let dfn = calc_dist2(lat0, lon0, xlat1, xlon1);
 	let bars0 = [...bars].map(dfn);
-	bars0.sort((a: IBar, b: IBar) => ((a.dist ?? 0) - (b.dist ?? 0)));
+	bars0.sort((a: Bar, b: Bar) => ((a.dist ?? 0) - (b.dist ?? 0)));
 	console.log(bars0.length);
 	let next_bar = bars0[0];
 	console.log(next_bar);
+
+	bars_ret.push(next_bar);
 
 	lat = next_bar.Latitude??0;
 	lon = next_bar.Longitude??0;	
     }
 
-    // let bars = (await query_by_latlon(lat0, lon0, lat, lon));
-    // let dfn = calc_dist2(lat0, lon0, lat1, lon1);
-    // let bars0 = [...bars].map(dfn); //.sort((x: IBar) => x.dist);
-    // bars0.sort((a: IBar, b: IBar) => ((a.dist ?? 0) - (b.dist ?? 0)));
-    
-    // //bars0.forEach((x: IBar) => console.log(x));
-    // console.log(bars0.length);
-    // console.log(bars0[0]);
-    // console.log(bars0[10]);
+    return bars_ret;
+}
 
-    
+async function main() {
+    let xlat0 = 40.716110;
+    let xlon0 = -74.010790;
+    let xlat1 = 40.755760;
+    let xlon1 = -73.968979;
+
+    let bars = (await get_bars(xlat0, xlon0, xlat1, xlon1));
+
+    for (const b of bars) {
+	console.log(b);
+    }
 
 }
 
