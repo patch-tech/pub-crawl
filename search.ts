@@ -19,7 +19,6 @@ function from_ratio(a: number, r: number, c: number){
     return (d * r) + a;
 }
 
-
 async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: number) {
 
     let min_lat = Math.min(lat0, lat1);
@@ -36,7 +35,6 @@ async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: n
 	  medianSpendPerCustomer,
 	  openedOn,
 	  closedOn } = RestaurantInsights.fields;
-
     
     let query = RestaurantInsights.select(
 	categoryTags.as("Category_Tags"),
@@ -62,14 +60,8 @@ async function query_by_latlon(lat0: number, lon0: number, lat1: number, lon1: n
     return bars;
 }
 
-
 async function get_bars(xlat0: number, xlon0: number, xlat1: number, xlon1: number) {
 
-    // let xlat0 = 40.716110;
-    // let xlon0 = -74.010790;
-    // let xlat1 = 40.755760;
-    // let xlon1 = -73.968979;
-    
     function calc_dist2 (lat0: number, lon0: number, lat1: number, lon1: number) {
 	return function (x: Bar) {
 	    let dy = Math.abs(((x.Latitude??0) - lat0) / (lat1 - lat0));
@@ -132,8 +124,6 @@ async function main() {
 }
 
 main().catch(console.error);
-
-
 
 
 // 166 Chambers St, New York, NY 10007
