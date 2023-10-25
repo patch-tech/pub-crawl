@@ -1,0 +1,315 @@
+{
+  "id": "018b67ee-3b10-7e7e-865c-8f4bad03b996",
+  "name": "pub_crawl",
+  "description": null,
+  "version": "0.3.0",
+  "accelerated": true,
+  "dataset": [
+    {
+      "name": "RESTAURANT_INSIGHTS",
+      "description": null,
+      "source": {
+        "id": "6621a92f-0d90-4451-9260-8e63e24a01f0",
+        "path": {
+          "type": "snowflake",
+          "schema": "PUBLIC",
+          "table": "RESTAURANT_INSIGHTS"
+        }
+      },
+      "schema": {
+	"primaryKey": "PLACEKEY",
+        "fields": [
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "PLACEKEY",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "PARENT_PLACEKEY",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "LOCATION_NAME",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "SAFEGRAPH_BRAND_IDS",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BRANDS",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "TOP_CATEGORY",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "SUB_CATEGORY",
+            "type": "string"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "NAICS_CODE",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "LATITUDE",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "LONGITUDE",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "STREET_ADDRESS",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "CITY",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "REGION",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "POSTAL_CODE",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "ISO_COUNTRY_CODE",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "PHONE_NUMBER",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "CATEGORY_TAGS",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "OPENED_ON",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "CLOSED_ON",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "TRACKING_CLOSED_SINCE",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "GEOMETRY_TYPE",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "SPEND_DATE_RANGE_START",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "SPEND_DATE_RANGE_END",
+            "type": "string"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "RAW_TOTAL_SPEND",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "RAW_NUM_TRANSACTIONS",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "RAW_NUM_CUSTOMERS",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "MEDIAN_SPEND_PER_TRANSACTION",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "MEDIAN_SPEND_PER_CUSTOMER",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "SPEND_PCT_CHANGE_VS_PREV_MONTH",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "SPEND_PCT_CHANGE_VS_PREV_YEAR",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "ONLINE_TRANSACTIONS",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "ONLINE_SPEND",
+            "type": "number"
+          }
+        ],
+        "missingValues": []
+      }
+    }
+  ]
+}

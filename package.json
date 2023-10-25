@@ -1,0 +1,17 @@
+{
+  "name": "pub-crawl",
+  "version": "1.0.0",
+  "description": "eb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@inquirer/prompts": "^3.2.0",
+    "node-ts": "^6.0.1",
+    "pub-crawl": "file:dist/nodejs/pub-crawl-0.3.0-0.2.2.tgz"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "pub-crawl",
+  "version": "0.3.0-0.2.2",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4",
+    "@types/node": "^18.16.1"
+  },
+  "dependencies": {
+    "graphql-request": "^6.0.0",
+    "@grpc/grpc-js": "^1.9.3",
+    "@grpc/proto-loader": "^0.7.10",
+    "google-protobuf": "^3.0.0"
+  }
+}
