@@ -1,3 +1,4 @@
+import { env } from 'process';
 import { RestaurantInsights } from "pub-crawl";
 import { input } from '@inquirer/prompts';
 
@@ -18,9 +19,22 @@ type LocationResponse = {
 	results: Result[]
 };
 
+async function getEnv(name: string, defaultValue?: string): Promise<string> {
+  const value = env[name];
+  if (value === undefined) {
+    if (defaultValue) {
+      return defaultValue;
+    } else {
+      throw new Error(`Undefined env variable: ${name}`);
+    }
+  }
+
+  return value;
+}
+
 
 async function getLatLong(location: string): Promise<LatLong | string> {
-	const geocode_key = 'AutNw4O37s8NzuL7z0FkBbzZNoAqv2rO';
+	const geocode_key = await getEnv('MAPQUEST_API_TOKEN', undefined);
 	try {
 		const response = await fetch('https://www.mapquestapi.com/geocoding/v1/address?key=' + geocode_key, {
 			method: 'POST',
@@ -61,10 +75,6 @@ interface Bar {
 	Street_Address: string,
 	Median_Spend: number,
 	dist?: number,
-}
-
-function to_ratio(a: number, b: number, c: number) {
-	return (b - a) / (c - a);
 }
 
 function from_ratio(a: number, r: number, c: number) {
@@ -171,10 +181,6 @@ async function summarize(path_name: string, bars: Bar[]) {
 
 
 async function main() {
-	// let xlat0 = 40.716110;
-	// let xlon0 = -74.010790;
-	// let xlat1 = 40.755760;
-	// let xlon1 = -73.968979;
 	const crawl_name = await input({ message: "What's the name of this epic adventure?" });
 
 	const start_location = await input({ message: 'Where are you starting?' });
@@ -186,11 +192,6 @@ async function main() {
 	let bars = (await get_bars(start.lat, start.lng, end.lat, end.lng));
 
 	summarize(crawl_name, bars);
-
-	// for (const b of bars) {
-	// 	console.log(b);
-	// }
-
 }
 
 main().catch(console.error);
