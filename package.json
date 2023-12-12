@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@inquirer/prompts": "^3.2.0",
+    "bars-and-restaurants": "file:dist/nodejs/bars-and-restaurants@0.1.0-0.2.0",
     "node-ts": "^6.0.1",
     "pub-crawl": "file:dist/nodejs/pub-crawl-0.3.0-0.2.2.tgz"
   }

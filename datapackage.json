@@ -1,15 +1,14 @@
 {
-  "id": "018b67ee-3b10-7e7e-865c-8f4bad03b996",
-  "name": "pub_crawl",
+  "id": "018bd006-00da-74d5-b63b-ff4a33dfbbe1",
+  "name": "bars-and-restaurants",
   "description": null,
-  "version": "0.3.0",
-  "accelerated": true,
+  "version": "0.1.0",
   "dataset": [
     {
       "name": "RESTAURANT_INSIGHTS",
       "description": null,
       "source": {
-        "id": "6621a92f-0d90-4451-9260-8e63e24a01f0",
+        "id": "2729ed17-81a1-40a1-8a7b-33edbb3a300d",
         "path": {
           "type": "snowflake",
           "schema": "PUBLIC",
@@ -17,7 +16,6 @@
         }
       },
       "schema": {
-	"primaryKey": "PLACEKEY",
         "fields": [
           {
             "constraints": {
@@ -305,6 +303,185 @@
             },
             "format": "default",
             "name": "ONLINE_SPEND",
+            "type": "number"
+          }
+        ],
+        "missingValues": []
+      }
+    },
+    {
+      "name": "SF_RESTAURANTS",
+      "description": null,
+      "source": {
+        "id": "2729ed17-81a1-40a1-8a7b-33edbb3a300d",
+        "path": {
+          "type": "snowflake",
+          "schema": "PUBLIC",
+          "table": "SF_RESTAURANTS"
+        }
+      },
+      "schema": {
+        "fields": [
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_ID",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_NAME",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_ADDRESS",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_CITY",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_STATE",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_POSTAL_CODE",
+            "type": "string"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_LATITUDE",
+            "type": "number"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_LONGITUDE",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_LOCATION",
+            "type": "string"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "BUSINESS_PHONE_NUMBER",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "INSPECTION_ID",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "INSPECTION_DATE",
+            "type": "string"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "INSPECTION_SCORE",
+            "type": "number"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "INSPECTION_TYPE",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "VIOLATION_ID",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "VIOLATION_DESCRIPTION",
+            "type": "string"
+          },
+          {
+            "constraints": {
+              "maxLength": 16777216,
+              "required": false
+            },
+            "format": "default",
+            "name": "RISK_CATEGORY",
+            "type": "string"
+          },
+          {
+            "bareNumber": true,
+            "constraints": {
+              "required": false
+            },
+            "format": "default",
+            "name": "NEIGHBORHOODS",
             "type": "number"
           }
         ],
