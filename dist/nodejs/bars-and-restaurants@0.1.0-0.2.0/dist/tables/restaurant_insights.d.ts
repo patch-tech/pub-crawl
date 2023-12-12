@@ -1,0 +1,45 @@
+import { Field, StringField } from "../field";
+import { FieldExpr } from "../field_expr";
+import { Table } from "../table";
+export declare class RestaurantInsights {
+    static fields: {
+        placekey: StringField;
+        parentPlacekey: StringField;
+        locationName: StringField;
+        safegraphBrandIds: StringField;
+        brands: StringField;
+        topCategory: StringField;
+        subCategory: StringField;
+        naicsCode: Field<number>;
+        latitude: Field<number>;
+        longitude: Field<number>;
+        streetAddress: StringField;
+        city: StringField;
+        region: StringField;
+        postalCode: StringField;
+        isoCountryCode: StringField;
+        phoneNumber: StringField;
+        categoryTags: StringField;
+        openedOn: StringField;
+        closedOn: StringField;
+        trackingClosedSince: StringField;
+        geometryType: StringField;
+        spendDateRangeStart: StringField;
+        spendDateRangeEnd: StringField;
+        rawTotalSpend: Field<number>;
+        rawNumTransactions: Field<number>;
+        rawNumCustomers: Field<number>;
+        medianSpendPerTransaction: Field<number>;
+        medianSpendPerCustomer: Field<number>;
+        spendPctChangeVsPrevMonth: Field<number>;
+        spendPctChangeVsPrevYear: Field<number>;
+        onlineTransactions: Field<number>;
+        onlineSpend: Field<number>;
+    };
+    private table_;
+    private static instance;
+    private constructor();
+    private static get;
+    static table(): Table;
+    static select(...selection: ("PLACEKEY" | "PARENT_PLACEKEY" | "LOCATION_NAME" | "SAFEGRAPH_BRAND_IDS" | "BRANDS" | "TOP_CATEGORY" | "SUB_CATEGORY" | "NAICS_CODE" | "LATITUDE" | "LONGITUDE" | "STREET_ADDRESS" | "CITY" | "REGION" | "POSTAL_CODE" | "ISO_COUNTRY_CODE" | "PHONE_NUMBER" | "CATEGORY_TAGS" | "OPENED_ON" | "CLOSED_ON" | "TRACKING_CLOSED_SINCE" | "GEOMETRY_TYPE" | "SPEND_DATE_RANGE_START" | "SPEND_DATE_RANGE_END" | "RAW_TOTAL_SPEND" | "RAW_NUM_TRANSACTIONS" | "RAW_NUM_CUSTOMERS" | "MEDIAN_SPEND_PER_TRANSACTION" | "MEDIAN_SPEND_PER_CUSTOMER" | "SPEND_PCT_CHANGE_VS_PREV_MONTH" | "SPEND_PCT_CHANGE_VS_PREV_YEAR" | "ONLINE_TRANSACTIONS" | "ONLINE_SPEND" | FieldExpr)[]): Table;
+}
